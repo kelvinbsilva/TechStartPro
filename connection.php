@@ -2,12 +2,12 @@
 
 class connection {
 
-    public string $host ="localhost";
-    public string $user ="super";
-    public string $pass ="pegu-it07";
-    public string $dbname = "olist";
-    public int $port = 3306;
-    public object $connect;
+    private string $host ="localhost";
+    private string $user ="super";
+    private string $pass ="pegu-it07";
+    private string $dbname = "olist";
+    private int $port = 3306;
+    private object $connect;
 
     public function conectar(): object {
         try{
