@@ -23,7 +23,7 @@ if (!$obProduct instanceof Product) {
 //Validação do post
 if(isset($_POST['excluir'])){
 
-    $obVaga->excluir();
+    $obProduct->excluir();
   
     header('location: index.php?status=success');
     exit;
