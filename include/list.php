@@ -1,4 +1,16 @@
 <?php
+  $mensagem = '';
+  if(isset($_GET['status'])){
+    switch ($_GET['status']) {
+      case 'success':
+        $mensagem = '<div class="alert alert-success">Ação executada com sucesso!</div>';
+        break;
+
+      case 'error':
+        $mensagem = '<div class="alert alert-danger">Ação não executada!</div>';
+        break;
+    }
+  }
 
 $resultados = '';
 
@@ -27,15 +39,9 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
 
 
 ?>
-<main>
 
-    <section>
-        <a href="register.php">
-            <button class="btn btn-success">
-                Cadastrar produto
-            </button>
-        </a>
-    </section>
+<main>
+<?= $mensagem ?>
     <table class="table">
         <thead>
             <tr>

@@ -32,6 +32,12 @@ class Product
      */
     public $value;
 
+    /**
+     * Categoria do produto
+     * @var id
+     */
+    public $idcategories;
+
 
     public function register()
     {
@@ -42,6 +48,7 @@ class Product
             'name'    => $this->name,
             'description' => $this->description,
             'value'     => $this->value,
+            'idcategories'     => $this->idcategories,
         ]);
 
         //Retornar sucesso

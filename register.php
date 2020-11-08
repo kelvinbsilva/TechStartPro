@@ -5,8 +5,10 @@ require __DIR__.'/vendor/autoload.php';
 define('TITLE','Cadastrar Produto');
 
 use App\Entity\Product;
+use \App\Entity\Categorie;
 
 $obProduct = new Product;
+$categories = categorie::getcategories();
 
 //VALIDAÇÃO DO POST
 if(isset($_POST['name'],$_POST['description'],$_POST['value'])){
