@@ -23,12 +23,12 @@ if (!$obProduct instanceof Product) {
 //Validação do post
 if(isset($_POST['excluir'])){
 
-    $obProduct->excluir();
+    $obProduct->deleteProd();
   
     header('location: index.php?status=success');
     exit;
   }
 
 include __DIR__ . '/include/header.php';
-include __DIR__ . '/include/form.php';
+include __DIR__ . '/include/delete.php';
 include __DIR__ . '/include/footer.php';

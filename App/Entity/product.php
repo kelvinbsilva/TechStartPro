@@ -47,7 +47,7 @@ class Product
         //Retornar sucesso
         return true;
     }
-    
+
     public function update()
     {
         return (new Database('product'))->dbUpdate('id = ' . $this->id, [
@@ -56,6 +56,11 @@ class Product
             'value'     => $this->value,
         ]);
     }
+    public function deleteProd()
+    {
+        return (new Database('product'))->delete('id = ' . $this->id);
+    }
+
 
 
 

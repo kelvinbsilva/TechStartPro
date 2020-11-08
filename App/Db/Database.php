@@ -79,30 +79,29 @@ class Database
 
   public function insert($values)
   {
-    //DADOS DA QUERY
+    //Dados da query
     $fields = array_keys($values);
     $binds  = array_pad([], count($fields), '?');
 
-    //MONTA A QUERY
+    //Monta a query
     $query = 'INSERT INTO ' . $this->table . ' (' . implode(',', $fields) . ') VALUES (' . implode(',', $binds) . ')';
 
-    //EXECUTA O INSERT
+    //Executa o insert
     $this->execute($query, array_values($values));
-
   }
 
 
   public function select($where = null, $order = null, $limit = null, $fields = '*')
   {
-    //DADOS DA QUERY
+    //Dados da query
     $where = strlen($where) ? 'WHERE ' . $where : '';
     $order = strlen($order) ? 'ORDER BY ' . $order : '';
     $limit = strlen($limit) ? 'LIMIT ' . $limit : '';
 
-    //MONTA A QUERY
+    //Monta a query
     $query = 'SELECT ' . $fields . ' FROM ' . $this->table . ' ' . $where . ' ' . $order . ' ' . $limit;
 
-    //EXECUTA A QUERY
+    //Executa a query
     return $this->execute($query);
   }
 
@@ -113,15 +112,27 @@ class Database
    * @return boolean
    */
 
-  public function dbUpdate($where,$values){
+  public function dbUpdate($where, $values)
+  {
     //Dados da query
     $fields = array_keys($values);
 
     //Monta a query
-    $query = 'UPDATE '.$this->table.' SET '.implode('=?,',$fields).'=? WHERE '.$where;
+    $query = 'UPDATE ' . $this->table . ' SET ' . implode('=?,', $fields) . '=? WHERE ' . $where;
 
     //Executa a query
-    $this->execute($query,array_values($values));
+    $this->execute($query, array_values($values));
+
+    //Retorna sucesso
+    return true;
+  }
+  public function delete($where)
+  {
+    //Monta a query
+    $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $where;
+
+     //Executa a query
+    $this->execute($query);
 
     //Retorna sucesso
     return true;
