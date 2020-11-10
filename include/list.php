@@ -3,6 +3,8 @@
 $resultados = '';
 $nocategories = '';
 $filter = '';
+
+
 foreach ($products as $product){
 
   $nocategories = '
