@@ -18,12 +18,12 @@ class Categorie
      * Nome do produto
      * @var string
      */
-    public $name;
+    public $namec;
 
 
     public function register()
     {
-        
+
         //Iserir produto no banco
         $obDatabase = new Database('categories');
         $this->id = $obDatabase->insert([
@@ -33,7 +33,6 @@ class Categorie
         //Retornar sucesso
         return true;
     }
-    
 
     public function deleteProd()
     {
