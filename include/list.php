@@ -1,62 +1,133 @@
 <?php
-  $mensagem = '';
-  if(isset($_GET['status'])){
-    switch ($_GET['status']) {
-      case 'success':
-        $mensagem = '<div class="alert alert-success">Ação executada com sucesso!</div>';
-        break;
-
-      case 'error':
-        $mensagem = '<div class="alert alert-danger">Ação não executada!</div>';
-        break;
-    }
-  }
 
 $resultados = '';
+$nocategories = '';
+$filter = '';
+foreach ($products as $product){
 
-foreach ($products as $product) {
-    $resultados .= '<tr>
-                          <td>' . $product->name . '</td>
-                          <td>' . $product->value . '</td>
-                          <td>' . $product->description . '</td>
-                          <td></td>
-                          <td>
-                        <a href="edit.php?id=' . $product->id . '">
-                          <button type="button" class="btn btn-primary">Editar</button>
-                        </a>
-                        <a href="delete.php?id=' . $product->id . '">
-                          <button type="button" class="btn btn-danger">Excluir</button>
-                        </a>
-                      </td>
-                        
-                        </tr>';
+  $nocategories = '
+  <div class="card border-primary mt-5  bg-light">
+  <div class="card-header border-primary">
+  <div class="row">
+  <div class="col-md-6 col-sm-6">
+    <h5 class="card-title"> Nome produto: ' . $product->name . ' </h5>
+  </div>
+  <div class="col-md-4 col-sm-6  offset-md-2">
+  <a href="edit.php?id=' . $product->id . '">
+  <button type="button" class="btn btn-outline-primary">Editar</button>
+  <a href="confirm.php?id=' . $product->id . '">
+  <button type="button" class="btn btn-outline-primary">Incluir Categoria</button>
+  </a>
+  <a href="delete.php?id=' . $product->id . '">
+  <button type="button" class="btn btn-outline-danger">Excluir</button>
+  </a>
+</a>
+</div>
+</div>
+   
+  
+  </div>
+  <div class="card-body">
+  <div class="row">
+    <div class="col-md-3">
+          <p>Valor: R$ ' . $product->value . '</p>
+          
+          
+    </div>
+    <div class="col-md-5">
+      <p> Descrição:</p>
+      <p>' . $product->description . '</p>
+    </div>
+
+    <div class="col-md-3">
+    <p> Categorias:</p>
+    <p> Esse produto não possui categoria </p>
+    </div>
+      
+  </div>
+  </div>
+      
+  </div>';
 }
-$resultados = strlen($resultados) ? $resultados : '<tr>
-<td colspan="6" class="text-center">
-       Nenhum produto encontrado
-</td>
-</tr>';
 
+
+foreach ($categories as $categorie) {
+
+
+  $filter .= '<option value='. $categorie->id .'>'. $categorie->namec .'</option>';
+}
+
+foreach ($idcategorie as $categorie) {
+
+    $resultados .= '
+  <div class="card border-primary mt-5  bg-light">
+            <div class="card-header border-primary">
+            <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <h5 class="card-title"> Nome produto: ' . $categorie->name . ' </h5>
+            </div>
+            <div class="col-md-4 col-sm-6  offset-md-2">
+            <a href="edit.php?id=' . $categorie->id . '">
+            <button type="button" class="btn btn-outline-primary">Editar</button>
+            <a href="confirm.php?id=' . $categorie->id . '">
+            <button type="button" class="btn btn-outline-primary">Incluir Categoria</button>
+            </a>
+            <a href="delete.php?id=' . $categorie->idc . '">
+            <button type="button" class="btn btn-outline-danger">Excluir</button>
+            </a>
+          </a>
+          </div>
+          </div>
+             
+            
+            </div>
+            <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                    <p>Valor: R$ ' . $categorie->value . '</p>
+                    
+                    
+              </div>
+              <div class="col-md-5">
+                <p> Descrição:</p>
+                <p>' . $categorie->description . '</p>
+              </div>
+
+              <div class="col-md-3">
+              <p> Categorias:</p>
+                <buttom class="btn btn-outline-dark">
+                ' . $categorie->namec . '
+                </buttom>
+              
+              </div>
+                
+            </div>
+            </div>
+                
+            </div>';
+  }
 
 ?>
-
+<div class="row"></div>
 <main>
-<?= $mensagem ?>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Produto</th>
-                <th scope="col">Valor</th>
-                <th scope="col">Descrição</th>
-                <th scope="col">Categorias</th>
-                <th scope="col">Ações</th>
-            </tr>
-        </thead>
+  <foorm  action="<?php echo $SERVER['PHP_SELF']; ?>">
+    <div class=" mt-4 form-row">
+      <div class="col-md-6">
+        <input placeholder="Pesquisar" class="form-control" type="text" name="product">
+      </div>
+      <div class="col-md-4">
+      <select class="custom-select">
+        <?=$filter?>
+      </select>
+      </div>
+      <button type="submit" class="btn btn-outline-primary"> Buscar </button>
 
-        <tbody>
-            <?= $resultados ?>
-        </tbody>
+  </foorm>
+  </div>
+  <?=  $nocategories ?>
+  <?= $resultados ?>
 
-    </table>
+
+
 
 </main>

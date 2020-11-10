@@ -4,27 +4,21 @@ require __DIR__ . '/vendor/autoload.php';
 
 define('TITLE', 'Editar Produto');
 
+use App\Entity\proCat;
 use App\Entity\Product;
+
 //Validação do ID
-if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
-    header('location: index.php?status=error');
-    exit;
-}
-
-//Consulta produto
 $obProduct = Product::getProduct($_GET['id']);
+$obProcat = proCat::getprocat($_GET['id']);
+$idcategorie = proCat::getproCats($_GET['id']);
 
-//Validação do produto
-if (!$obProduct instanceof Product) {
-    header('location: index.php?status=error');
-    exit;
-}
+
 
 //Validação do post
 if(isset($_POST['excluir'])){
 
+    $obProcat->deleteProcat();
     $obProduct->deleteProd();
-  
     header('location: index.php?status=success');
     exit;
   }

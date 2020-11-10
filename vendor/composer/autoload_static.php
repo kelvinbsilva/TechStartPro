@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit3e6429c0394c256a7153eaf5782d0297
 {
     public static $prefixLengthsPsr4 = array (
+        'L' => 
+        array (
+            'League\\Csv\\' => 11,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -14,6 +18,10 @@ class ComposerStaticInit3e6429c0394c256a7153eaf5782d0297
     );
 
     public static $prefixDirsPsr4 = array (
+        'League\\Csv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/csv/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',

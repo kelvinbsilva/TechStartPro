@@ -85,7 +85,8 @@ class Database
 
     //Monta a query
     $query = 'INSERT INTO ' . $this->table . ' (' . implode(',', $fields) . ') VALUES (' . implode(',', $binds) . ')';
-
+    
+    
     //Executa o insert
     $this->execute($query, array_values($values));
   }
@@ -100,6 +101,21 @@ class Database
 
     //Monta a query
     $query = 'SELECT ' . $fields . ' FROM ' . $this->table . ' ' . $where . ' ' . $order . ' ' . $limit;
+
+    //Executa a query
+    return $this->execute($query);
+  }
+  public function selectidCat()
+  {
+
+
+    //Monta a query
+    $query = 'SELECT * FROM  categories c
+    JOIN procat a
+    ON c.id = a.idcategories
+    JOIN product p
+    ON p.id = a.idproduct'
+    ;
 
     //Executa a query
     return $this->execute($query);

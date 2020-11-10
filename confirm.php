@@ -2,9 +2,10 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-define('TITLE', 'Editar Produto');
+define('TITLE', 'Confirmar categoria');
 
 use App\Entity\Product;
+
 //Validação do ID
 if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
     header('location: index.php?status=error');
@@ -20,22 +21,24 @@ if (!$obProduct instanceof Product) {
     exit;
 }
 use \App\Entity\Categorie;
+use App\Entity\proCat;
 
 $categories = categorie::getcategories();
 
+$obProCat = new proCat;
 
 //VALIDAÇÃO DO POST
-if (isset($_POST['name'], $_POST['description'], $_POST['value'])) {
+if (isset($_POST['idproduct'], $_POST['idcategories'], $_POST['idc'])) {
 
-    $obProduct->name    = $_POST['name'];
-    $obProduct->description = $_POST['description'];
-    $obProduct->value     = $_POST['value'];
-    $obProduct->update();
+    $obProCat->idproduct    = $_POST['idproduct'];
+    $obProCat->idproduct    = $_POST['idc'];
+    $obProCat->idcategories = $_POST['idcategories'];
+    $obProCat->register();
 
     header('location: index.php?status=success');
     exit;
 }
 
 include __DIR__ . '/include/header.php';
-include __DIR__ . '/include/form.php';
+include __DIR__ . '/include/productCat.php';
 include __DIR__ . '/include/footer.php';

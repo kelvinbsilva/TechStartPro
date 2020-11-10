@@ -23,16 +23,17 @@ class Categorie
 
     public function register()
     {
-
+        
         //Iserir produto no banco
         $obDatabase = new Database('categories');
         $this->id = $obDatabase->insert([
-            'name'    => $this->name,
+            'namec'    => $this->namec,
         ]);
 
         //Retornar sucesso
         return true;
     }
+    
 
     public function deleteProd()
     {

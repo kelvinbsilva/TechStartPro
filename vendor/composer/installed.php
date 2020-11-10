@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '0f534a47e29fb00142ef7950d76c8fd116a6ae94',
+    'reference' => 'e72bd747c166b83d7717ab3912fb2d9beb7dd012',
     'name' => 'kelvin/tec',
   ),
   'versions' => 
@@ -18,7 +18,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => '0f534a47e29fb00142ef7950d76c8fd116a6ae94',
+      'reference' => 'e72bd747c166b83d7717ab3912fb2d9beb7dd012',
+    ),
+    'league/csv' => 
+    array (
+      'pretty_version' => '8.0.0',
+      'version' => '8.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0a1b535df48507f58ed3c7ab44e72272b11163ac',
     ),
   ),
 );

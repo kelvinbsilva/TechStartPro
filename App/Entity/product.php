@@ -32,27 +32,23 @@ class Product
      */
     public $value;
 
-    /**
-     * Categoria do produto
-     * @var id
-     */
-    public $idcategories;
-
+    
 
     public function register()
     {
-
+        
+        
         //Iserir produto no banco
         $obDatabase = new Database('product');
         $this->id = $obDatabase->insert([
             'name'    => $this->name,
             'description' => $this->description,
             'value'     => $this->value,
-            'idcategories'     => $this->idcategories,
         ]);
 
         //Retornar sucesso
         return true;
+       
     }
 
     public function update()
@@ -62,6 +58,7 @@ class Product
             'description' => $this->description,
             'value'     => $this->value,
         ]);
+    
     }
     public function deleteProd()
     {
