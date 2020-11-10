@@ -31,7 +31,7 @@ $obProCat = new proCat;
 if (isset($_POST['idproduct'], $_POST['idcategories'], $_POST['idc'])) {
 
     $obProCat->idproduct    = $_POST['idproduct'];
-    $obProCat->idproduct    = $_POST['idc'];
+    $obProCat->idc    = $_POST['idc'];
     $obProCat->idcategories = $_POST['idcategories'];
     $obProCat->register();
 
